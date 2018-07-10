@@ -1,0 +1,19 @@
+<h2 *ngIf="!editMode && !recipe">Please, select a Recipe</h2>
+<div *ngIf="!editMode && recipe" class="card" style="width: 100%;">
+  <img class="card-img-top" [src]="recipe?.imagePath" alt="{{ recipe?.title }}">
+  <div class="card-body">
+    <div class="d-flex w-100 justify-content-between">
+      <h2 class="card-title">{{ recipe?.title }}</h2>
+      <small class="text-muted">{{ recipe?.date | date:'fullDate' }}</small>
+    </div>
+    <p class="card-text">{{ recipe?.description }}</p>
+    <a (click)="onEditRecipe()" class="btn btn-primary text-light mr-1 mt-2">Edit</a>
+    <a (click)="onDeleteRecipe()" class="btn btn-danger text-light mt-2">Delete</a>
+  </div>
+</div>
+
+<app-recipe-edit
+  [recipe]="recipe"
+  (changeEditeMode)="onChangeMode($event)"
+  *ngIf="editMode"
+></app-recipe-edit>

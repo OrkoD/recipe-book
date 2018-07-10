@@ -1,0 +1,15 @@
+<a
+  (click)="onSelectRecipe()"
+  style="cursor: pointer"
+  class="list-group-item list-group-item-action w-100 d-flex align-items-center justify-content-between">
+  <div class="">
+    <h5>{{ recipe.title }}</h5>
+    <p class="mb-1">{{ recipe.description | slice: 0:80 }}{{ recipe.description.length > 80 ? '...' : '' }}</p>
+    <small>{{ recipe.date | date:'mediumDate' }}</small>
+  </div>
+  <img
+    style="height: 80px"
+    class="ml-2"
+    [src]="recipe.imagePath"
+    alt='{{ recipe.title }}'>
+</a>
